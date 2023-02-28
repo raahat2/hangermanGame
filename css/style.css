@@ -14,20 +14,20 @@ body{
     justify-content: center;
     align-items: center;
    height: 100%;
-background-image: url(/images/360_F_412821610_95RpjzPXCE2LiWGVShIUCGJSktkJQh6P.jpg);
+background-image: url(/images/pexels-felix-mittermeier-956999.jpg);
 background-repeat: no-repeat;
 background-size: cover
 }
 .containerReg{
-    background-color: #b2cdde;
+    background-color: #1e2e42;
     padding: 25px;
     width: 25%;
     border-radius: 18px;
-    box-shadow: 0px 0px 20px #b2cdde;
+    box-shadow: 0px 0px 20px white;
 }
 .heading h1{
     margin: 0;
-    color: #001219;
+    color: white;
 }
 .input{
     margin-top: 20px;
@@ -35,7 +35,7 @@ background-size: cover
 .input label{
     font-size: 20px;
     font-weight: 600;
-    color: #001219;
+    color: white;
 }
 .input input{
     padding: 7px;
@@ -43,6 +43,7 @@ background-size: cover
     border-radius: 7px;
     border: none;
     margin-top: 12px;
+    color: black;
 }
 .button{
     margin-top: 30px;
@@ -55,9 +56,9 @@ background-size: cover
     border: none;
     font-size: 18px;
     font-weight: 600;
-    color: #001219;
-    background-color: #78a0b9;
-    box-shadow: 0px 0px 6px #78a0b9;
+    color: white;
+    background-color: #1e2e42;
+    box-shadow: 0px 0px 6px white;
     border-radius: 18px;
     transition: 0.2s all;
 }
@@ -75,19 +76,19 @@ background-size: cover
 }
 .containerLog{
     display: none;
-    background-color: #b2cdde;
+    background-color: #1e2e42;
     padding: 25px;
     width: 25%;
     border-radius: 18px;
-    box-shadow: 0px 0px 20px #b2cdde;
+    box-shadow: 0px 0px 20px white;
 }
 .containerG{
     width: 32%;
     display: none;
-    background-color: #b2cdde;
+    background-color: #1e2e42;
     padding: 25px;
     border-radius: 18px;
-    box-shadow: 0px 0px 20px #b2cdde;
+    box-shadow: 0px 0px 20px white;
 }
 .heading{
     text-align: center;
@@ -96,6 +97,7 @@ background-size: cover
 }
 label#guessRemaing {
     font-size: 18px;
+    color:white;
 }
 .inputGuess{
     width: 100%;
@@ -109,7 +111,7 @@ label#guessRemaing {
     display: none;
 }
 .border{
-    border: 1px groove #555c60;
+    border: 1px groove white;
     width: 75%;
     margin-left: 12.5%;
     margin-top: 35px;
@@ -138,10 +140,11 @@ label#guessRemaing {
 }
 div#word {
     display: flex;
+    color: white;
 }
 div#word input{
     border: none;
-background-color:#b2cdde ;
+    background-color: #1e2e42;
 font-size: 25px;
 }
 .facebook{
@@ -149,11 +152,11 @@ font-size: 25px;
 }
 .containerD{
     display: none;
-    background-color: #b2cdde;
+    background-color: #1e2e42;
     width: 35%;
     padding: 25px;
     border-radius: 18px;
-    box-shadow: 0px 0px 20px #b2cdde;
+    box-shadow: 0px 0px 20px white;
 }
 .score{font-size: 28px;
     font-weight: 700;}
@@ -168,4 +171,11 @@ font-size: 25px;
 label#atempt1,label#atempt2,label#atempt,label#score  {
     font-size: 23px;
     font-weight: 700;
+    color:white;
+}
+.letter input {
+    color: white;
+}   
+label#name,label  {
+    color: white;
 }

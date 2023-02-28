@@ -1,0 +1,171 @@
+*{
+box-sizing: border-box;
+}
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;;
+}
+.wraper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   height: 100%;
+background-image: url(/images/360_F_412821610_95RpjzPXCE2LiWGVShIUCGJSktkJQh6P.jpg);
+background-repeat: no-repeat;
+background-size: cover
+}
+.containerReg{
+    background-color: #b2cdde;
+    padding: 25px;
+    width: 25%;
+    border-radius: 18px;
+    box-shadow: 0px 0px 20px #b2cdde;
+}
+.heading h1{
+    margin: 0;
+    color: #001219;
+}
+.input{
+    margin-top: 20px;
+}
+.input label{
+    font-size: 20px;
+    font-weight: 600;
+    color: #001219;
+}
+.input input{
+    padding: 7px;
+    width: 100%;
+    border-radius: 7px;
+    border: none;
+    margin-top: 12px;
+}
+.button{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.button button{
+    padding: 7px;
+    width: 40%;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #001219;
+    background-color: #78a0b9;
+    box-shadow: 0px 0px 6px #78a0b9;
+    border-radius: 18px;
+    transition: 0.2s all;
+}
+.button button:active{
+    transform: scale(0.8);
+}
+.button button:hover{
+    cursor: pointer;
+}
+
+.input p{
+    color: red;
+    margin: 0;
+    font-size: 15px;
+}
+.containerLog{
+    display: none;
+    background-color: #b2cdde;
+    padding: 25px;
+    width: 25%;
+    border-radius: 18px;
+    box-shadow: 0px 0px 20px #b2cdde;
+}
+.containerG{
+    width: 32%;
+    display: none;
+    background-color: #b2cdde;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0px 0px 20px #b2cdde;
+}
+.heading{
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+label#guessRemaing {
+    font-size: 18px;
+}
+.inputGuess{
+    width: 100%;
+    font-size: 35px;
+    letter-spacing: 25px;
+}
+.inputGuess label{
+    font-size: 20px;
+}
+#next{
+    display: none;
+}
+.border{
+    border: 1px groove #555c60;
+    width: 75%;
+    margin-left: 12.5%;
+    margin-top: 35px;
+}
+.icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 37px;
+    margin-top: 23px;
+
+}
+.icons:hover{
+    cursor: pointer;
+}
+.icons .insta{
+    margin-left:12px;
+    color:#aa13c5;
+}
+.icons .pin{
+    margin-left:12px;
+    color: #da0021;
+}
+.letter{
+    width: 5%;
+}
+div#word {
+    display: flex;
+}
+div#word input{
+    border: none;
+background-color:#b2cdde ;
+font-size: 25px;
+}
+.facebook{
+    color: #0672dc;
+}
+.containerD{
+    display: none;
+    background-color: #b2cdde;
+    width: 35%;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0px 0px 20px #b2cdde;
+}
+.score{font-size: 28px;
+    font-weight: 700;}
+.scoreDisplay{
+    margin-top: 20px;
+    font-size: 25px;
+}
+.attemptDisplay{
+    margin-top: 20px;
+    font-size: 20px;
+}
+label#atempt1,label#atempt2,label#atempt,label#score  {
+    font-size: 23px;
+    font-weight: 700;
+}

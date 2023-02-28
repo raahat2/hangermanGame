@@ -1,0 +1,45 @@
+@media only screen and (max-width: 1024px){
+    .containerReg{
+        width:40%;
+    }
+    .containerLog{
+        width:40%;
+    }
+    .containerG{
+        width:48%;
+    }
+    .containerD{
+        width:45%;
+    }
+}
+@media only screen and (max-width: 769px){
+.containerReg {
+    width: 55%;
+}
+.containerLog{
+    width:50%;
+}
+.containerG{
+    width:70%;
+}
+.containerD{
+    width:60%;
+}
+}
+@media only screen and (max-width: 426px){
+    .containerReg {
+        width: 94%;
+    }
+    .containerLog {
+        width: 91%;
+    }
+    .containerG {
+        width: 94%;
+    }
+    div#word input {
+        font-size: 20px;
+    }
+    .containerD {
+        width: 93%;
+    }
+}

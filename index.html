@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/media.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wraper">
+      <div class="containerReg" id="containerReg">
+        <div class="heading">
+          <h1>Register</h1>
+        </div>
+        <div class="input">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Enter your Name..." />
+          <p id="nameErr"></p>
+        </div>
+        <div class="input">
+          <label for="email">Email</label>
+          <input type="text" id="email" placeholder="Enter your Email..." />
+          <p id="emailErr"></p>
+        </div>
+        <div class="input">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your Password..."
+          />
+          <p id="passErr"></p>
+        </div>
+        <div class="button">
+          <button onclick="register()">Register</button>
+          <button onclick="login()">Login</button>
+        </div>
+        <div class="border"></div>
+        <div class="icons">
+          <div class="facebook"><i class="fa-brands fa-facebook"></i></div>
+          <div class="insta"><i class="fa-brands fa-instagram"></i></div>
+          <div class="pin"><i class="fa-brands fa-pinterest"></i></div>
+        </div>
+      </div>
+      <div class="containerLog" id="containerLog">
+        <div class="heading">
+          <h1>Login</h1>
+        </div>
+        <div class="input">
+          <label for="email">Email</label>
+          <input type="text" id="emailLog" placeholder="Enter your Email..." />
+          <p id="emailLogErr"></p>
+        </div>
+        <div class="input">
+          <label for="passwordl̥ō">Password</label>
+          <input
+            type="password"
+            id="passwordLog"
+            placeholder="Enter your Password..."
+          />
+          <p id="passLogErr"></p>
+        </div>
+        <div class="button">
+          <button onclick="play()">Play</button>
+        </div>
+        <div class="border"></div>
+        <div class="icons">
+          <div class="facebook"><i class="fa-brands fa-facebook"></i></div>
+          <div class="insta"><i class="fa-brands fa-instagram"></i></div>
+          <div class="pin"><i class="fa-brands fa-pinterest"></i></div>
+        </div>
+      </div>
+      <div class="containerG" id="containerGame">
+        <div class="heading">
+          <h1>Game</h1>
+          <label for="guessRemaing" id="guessRemaing"></label>
+        </div>
+        <div class="inputGuess">
+          <div id="word"></div>
+        </div>
+        <div class="guess">
+          <p id="guessMsg"></p>
+        </div>
+        <div class="input">
+          <label for="guess">Your guess</label>
+          <input
+            type="text"
+            id="guessInput"
+            placeholder="Enter the letter you guess..."
+          />
+        </div>
+        <div class="button">
+          <button onclick="guessIn()" id="submit">Submit Guess</button>
+          <button id="next" onclick="next()">Next</button>
+        </div>
+      </div>
+      <div class="containerD" id="dash">
+        <div class="score">
+          <label for="name" id="name">Score Card</label>
+        </div>
+        <div class="scoreDisplay">
+          <label>YOUR SCORE:</label>
+          <label id="score"></label>
+        </div>
+        <div class="attemptDisplay">
+          <label for="q1">Attempts taken for first:</label>
+          <label id="atempt"></label>
+          <br />
+          <br />
+          <label for="q2">Attempts taken for second:</label>
+          <label id="atempt1"></label>
+          <br />
+          <br />
+          <label for="q1">Attempts taken for third:</label>
+          <label id="atempt2"></label>
+          <br />
+          <br />
+        </div>
+        <div class="button">
+          <button onclick="tryAgain()">TRY AGAIN!</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./js/javascript.js"></script>
+</html>

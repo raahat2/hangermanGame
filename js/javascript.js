@@ -83,6 +83,11 @@ function register() {
     };
     users.push(user);
     localStorage.setItem("user", JSON.stringify(users));
+    nam.value = "";
+    email.value = "";
+    password.value = "";
+    passErr.innerHTML = "Successfully registered!";
+    passErr.style.color = "white";
   } else {
     return false;
   }
@@ -117,7 +122,6 @@ function login() {
 let guessMsg = document.getElementById("guessMsg");
 let guessRem = document.getElementById("guessRemaing");
 let wordDisplay = document.getElementById("word");
-let guess = document.getElementById("guessInput");
 function chooseWord() {
   word = words[Math.floor(Math.random() * words.length)];
   wordGuess = word;
@@ -128,12 +132,62 @@ function chooseWord() {
     wordSplit[randomIndex] = "-";
   }
   wordSplit.forEach((e, index) => {
-    let wordDisplayedNode = `<div class="letter" id="letter${index}"><input value="${e}"disabled /></div>`;
+    let wordDisplayedNode = `<input value="${e}" class="inFleid" id="letterIn${index}" maxlength="1" 
+     onfocus="(this.value =='-') && (this.value='')" 
+    onblur="(this.value =='') && (this.value='-')" />`;
+
     wordDisplay.innerHTML += wordDisplayedNode;
   });
+  for (let i = 0; i < wordSplit.length; i++) {
+    if (wordSplit[i] === "-") {
+      document.getElementById("letterIn" + i).disabled = false;
+    } else {
+      document.getElementById("letterIn" + i).disabled = true;
+    }
+  }
+  let guessVal = document.querySelectorAll(".inFleid");
+  for (let i = 0; i < guessVal.length; i++) {
+    console.log("wordsplit1:", wordSplit1, "wordsplit", wordSplit);
+    guessVal[i].addEventListener("input", function () {
+      if (
+        wordSplit1[i].includes(guessVal[i].value) &&
+        guessVal[i].value != ""
+      ) {
+        wordSplit[i] = guessVal[i].value;
+        guessRem.innerText = "Guesses Remaining:" + guesses;
+        guessVal[i].style.borderColor = "green";
+        atempt += 1;
+        if (!wordSplit.includes("-") && !wordSplit.includes("")) {
+          score++;
+          next();
+        }
+      } else {
+        atempt += 1;
+        guesses -= 1;
+        guessRem.innerText = "Guesses Remaining:" + guesses;
+        guessVal[i].style.borderColor = "red";
+        if (guesses == 0) {
+          guessMsg.innerText = "Sorry you are out of guesses!";
+          guessMsg.style.color = "red";
+          next();
+        }
+      }
+      if (guessVal[i].style.borderColor == "green") {
+        // guessVal[i].nextElementSibling.focus({ focusVisible: true });
+        // console.log(guessVal[i].nextElementSibling);
+        for (let i = 0; i < guessVal.length; i++) {
+          let selector = "-";
+          let nextEle = guessVal[i];
+          let nextEle1 = guessVal[i];
+          if (nextEle.value === selector)
+            console.log(nextEle.nextElementSibling);
+          // nextEle = nextEle1.nextElementSibling.focus();
+        }
+      }
+    });
+  }
 }
-chooseWord();
-console.log(wordSplit);
+
 function play() {
   blankCheck(emailLog, emailLogErr);
   blankCheck(passwordLog, passLogErr);
@@ -144,19 +198,17 @@ function play() {
     ) {
       document.getElementById("containerLog").style.display = "none";
       document.getElementById("containerGame").style.display = "block";
-
-      guessRem.innerText = "Guesses Remaining: " + guesses;
     } else if (
       emailLog.value != users[i].email &&
       passwordLog == users[i].password
     ) {
-      emailLogErr.innerHTML = "*" + "Invalid Email";
+      emailLogErr.innerHTML = "Invalid Email";
       emailLogErr.style.color = "red";
     } else if (
       emailLog.value == users[i].email &&
       passwordLog != users[i].password
     ) {
-      passLogErr.innerHTML = "*" + "Invalid Password";
+      passLogErr.innerHTML = "Invalid Password";
       passLogErr.style.color = "red";
     }
   }
@@ -173,48 +225,6 @@ passwordLog.addEventListener("input", () => {
   blankCheck(passwordLog, passLogErr);
 });
 
-function guessIn() {
-  atempt += 1;
-  guessRem.innerText = "Guesses Remaining:" + guesses;
-
-  if (guesses <= 0) {
-    guessMsg.innerText = "";
-    guess.innerHTML = "";
-    document.getElementById("submit").style.display = "none";
-    guessMsg.innerText = "Sorry you are out of guesses!";
-    guessMsg.style.color = "red";
-    document.getElementById("next").style.display = "block";
-  } else {
-    if (!guess.value) {
-      guessMsg.innerText = "Please enter the letter!";
-      guessMsg.style.color = "red";
-    } else if (wordSplit1.includes(guess.value)) {
-      guessed.push(guess.value);
-      guessMsg.innerText = "Good Going!";
-      guessMsg.style.color = "green";
-
-      for (let i = 0; i < word.length; i++) {
-        if (wordSplit1[i].includes(guess.value)) {
-          wordSplit[i] = guess.value;
-          wordDisplay.innerHTML = wordSplit.join("");
-        }
-      }
-      if (!wordSplit.includes("-")) {
-        score += 1;
-        guessMsg.innerText = "Hurray you guessed it!";
-        guessMsg.style.color = "green";
-        document.getElementById("next").style.display = "block";
-        document.getElementById("submit").style.display = "none";
-      }
-      guess.value = "";
-    } else {
-      guessMsg.innerText = "Try again!";
-      guessMsg.style.color = "red";
-      guess.value = "";
-    }
-    guesses -= 1;
-  }
-}
 function next() {
   nextClick += 1;
   let atempt1;
@@ -235,26 +245,28 @@ function next() {
   guesses = 5;
   guessMsg.innerText = "";
   guessRem.innerText = "Guesses Remaining: " + guesses;
-  guess.innerHTML = "";
   wordDisplay.innerHTML = "";
   if (nextClick == 3) {
     document.getElementById("containerGame").style.display = "none";
     document.getElementById("dash").style.display = "block";
     document.getElementById("score").innerText = score + "/3";
-    document.getElementById("atempt").innerText = scores[0] + "/5";
-    document.getElementById("atempt1").innerText = scores[1] + "/5";
-    document.getElementById("atempt2").innerText = scores[2] + "/5";
+    document.getElementById("atempt").innerText = scores[0];
+    document.getElementById("atempt1").innerText = scores[1];
+    document.getElementById("atempt2").innerText = scores[2];
     console.log(scores);
   } else {
     chooseWord();
-    document.getElementById("next").style.display = "none";
-    document.getElementById("submit").style.display = "block";
   }
   atempt = 0;
 }
 function tryAgain() {
+  emailLog.value = "";
+  passwordLog.value = "";
   document.getElementById("containerReg").style.display = "none";
   document.getElementById("dash").style.display = "none";
   document.getElementById("containerGame").style.display = "none";
   document.getElementById("containerLog").style.display = "block";
+  chooseWord();
 }
+
+chooseWord();

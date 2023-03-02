@@ -31,6 +31,7 @@ let words = [
   "shaft",
   "live",
 ];
+
 let scores = [];
 let guessed = [];
 let guesses = 5;
@@ -41,9 +42,10 @@ let wordSplit;
 let wordSplit1;
 let nextClick = 0;
 let atempt = 0;
+
 function blankCheck(element, error) {
   if (!element.value) {
-    error.innerHTML = "*" + "Can't be blank";
+    error.innerHTML = "Can't be blank";
     error.style.color = "red";
     return false;
   } else {
@@ -72,17 +74,40 @@ function passwordVal() {
     return true;
   }
 }
+function existingCheck() {
+  let userExist = JSON.parse(localStorage.getItem("user"));
+  if (userExist) {
+    userExist.forEach((e) => {
+      if (e.email == email.value) {
+        passErr.innerHTML = "email already exists!";
+        passErr.style.color = "red";
+      } else {
+        register();
+      }
+    });
+  } else {
+    register();
+  }
+}
 function register() {
   blankCheck(nam, nameErr);
   passwordVal();
-  if (emailVal() && passwordVal()) {
+  if (
+    blankCheck(email, emailErr) &&
+    emailVal() &&
+    passwordVal() &&
+    blankCheck(nam, nameErr)
+  ) {
     let user = {
       name: nam.value,
       password: password.value,
       email: email.value,
     };
+
     users.push(user);
+
     localStorage.setItem("user", JSON.stringify(users));
+
     nam.value = "";
     email.value = "";
     password.value = "";
@@ -122,6 +147,7 @@ function login() {
 let guessMsg = document.getElementById("guessMsg");
 let guessRem = document.getElementById("guessRemaing");
 let wordDisplay = document.getElementById("word");
+
 function chooseWord() {
   word = words[Math.floor(Math.random() * words.length)];
   wordGuess = word;
@@ -129,17 +155,17 @@ function chooseWord() {
   wordSplit = word.split("");
   for (let i = 0; i < 3; i++) {
     randomIndex = Math.floor(Math.random() * wordSplit.length);
-    wordSplit[randomIndex] = "-";
+    wordSplit[randomIndex] = "";
   }
   wordSplit.forEach((e, index) => {
-    let wordDisplayedNode = `<input value="${e}" class="inFleid" id="letterIn${index}" maxlength="1" 
-     onfocus="(this.value =='-') && (this.value='')" 
-    onblur="(this.value =='') && (this.value='-')" />`;
+    let wordDisplayedNode = `<input value="${e}" class="inFleid" id="letterIn${index}" maxlength="1" placeholder="${
+      e ? e : "-"
+    }" />`;
 
     wordDisplay.innerHTML += wordDisplayedNode;
   });
   for (let i = 0; i < wordSplit.length; i++) {
-    if (wordSplit[i] === "-") {
+    if (wordSplit[i] === "") {
       document.getElementById("letterIn" + i).disabled = false;
     } else {
       document.getElementById("letterIn" + i).disabled = true;
@@ -147,7 +173,6 @@ function chooseWord() {
   }
   let guessVal = document.querySelectorAll(".inFleid");
   for (let i = 0; i < guessVal.length; i++) {
-    console.log("wordsplit1:", wordSplit1, "wordsplit", wordSplit);
     guessVal[i].addEventListener("input", function () {
       if (
         wordSplit1[i].includes(guessVal[i].value) &&
@@ -163,7 +188,9 @@ function chooseWord() {
         }
       } else {
         atempt += 1;
-        guesses -= 1;
+        if (guessVal[i].value != "") {
+          guesses -= 1;
+        }
         guessRem.innerText = "Guesses Remaining:" + guesses;
         guessVal[i].style.borderColor = "red";
         if (guesses == 0) {
@@ -173,15 +200,11 @@ function chooseWord() {
         }
       }
       if (guessVal[i].style.borderColor == "green") {
-        // guessVal[i].nextElementSibling.focus({ focusVisible: true });
-        // console.log(guessVal[i].nextElementSibling);
         for (let i = 0; i < guessVal.length; i++) {
-          let selector = "-";
-          let nextEle = guessVal[i];
-          let nextEle1 = guessVal[i];
-          if (nextEle.value === selector)
-            console.log(nextEle.nextElementSibling);
-          // nextEle = nextEle1.nextElementSibling.focus();
+          if (guessVal[i].value == "") {
+            document.getElementById("letterIn" + i).focus();
+            break;
+          }
         }
       }
     });
@@ -260,13 +283,16 @@ function next() {
   atempt = 0;
 }
 function tryAgain() {
-  emailLog.value = "";
-  passwordLog.value = "";
   document.getElementById("containerReg").style.display = "none";
   document.getElementById("dash").style.display = "none";
-  document.getElementById("containerGame").style.display = "none";
-  document.getElementById("containerLog").style.display = "block";
-  chooseWord();
+  document.getElementById("containerLog").style.display = "none";
+  document.getElementById("containerGame").style.display = "block";
+  nextClick = -1;
+  score = 0;
+  next();
 }
-
+function registerationForm() {
+  document.getElementById("containerReg").style.display = "block";
+  document.getElementById("containerLog").style.display = "none";
+}
 chooseWord();

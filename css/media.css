@@ -1,45 +1,45 @@
 @media only screen and (max-width: 1024px){
-    .containerReg{
+    .container-reg{
         width:40%;
     }
-    .containerLog{
+    .container-log{
         width:40%;
     }
-    .containerG{
+    .container-g{
         width:48%;
     }
-    .containerD{
+    .container-d{
         width:45%;
     }
 }
 @media only screen and (max-width: 769px){
-.containerReg {
+.container-reg {
     width: 55%;
 }
-.containerLog{
+.container-log{
     width:50%;
 }
-.containerG{
+.container-g{
     width:70%;
 }
-.containerD{
+.container-d{
     width:60%;
 }
 }
 @media only screen and (max-width: 426px){
-    .containerReg {
+    .container-reg {
         width: 94%;
     }
-    .containerLog {
+    .container-log {
         width: 91%;
     }
-    .containerG {
+    .container-g {
         width: 94%;
     }
     div#word input {
         font-size: 20px;
     }
-    .containerD {
+    .container-d {
         width: 93%;
     }
 }
